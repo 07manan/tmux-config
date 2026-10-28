@@ -20,8 +20,8 @@ import os, re, subprocess, sys, unicodedata
 
 PLUGIN_PREVIEW = os.path.expanduser(
     "~/.config/tmux/plugins/tmux-sessionx/scripts/preview.sh")
-BORD = "\x1b[0;38;2;44;51;63m"     # #2c333f, pill-theme border
-ACC  = "\x1b[0;38;2;135;215;255m"  # #87d7ff, pill-theme accent
+BORD = "\x1b[0;38;2;44;52;66m"     # #2c3442, pill-theme border
+ACC  = "\x1b[0;38;2;154;181;221m"  # #9ab5dd, pill-theme accent
 PLAIN = "\x1b[0m"
 
 ESC = re.compile(r"\x1b(?:\[([0-9;:]*)([A-Za-z])|\][^\x07\x1b]*(?:\x07|\x1b\\))")

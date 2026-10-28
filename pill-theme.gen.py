@@ -19,9 +19,9 @@ ICON = chr(0xF489)                # session icon (nf-oct-terminal)
 ZOOM = chr(0xF065)                # zoomed-window flag (nf-fa-expand)
 ELL  = chr(0x2026)                # name-truncation ellipsis
 BAR  = "default"                  # status bar bg = the terminal's own bg
-BG,PILL,DIM,TXT,BRT = "#16181d","#232830","#6b7684","#8b96a5","#dce6f2"
-ACC,ACC2,DEEP,DARK  = "#87d7ff","#3fa9e0","#0087d7","#005f87"
-INK,WARN,BORD       = "#0f1319","#f0b072","#2c333f"
+BG,PILL,DIM,TXT,BRT = "#151921","#202733","#727f92","#909bad","#e0e6f0"
+ACC,ACC2,DEEP,DARK  = "#9ab5dd","#7794c7","#5f7fb3","#2e405e"
+INK,WARN,BORD       = "#0f131b","#dcb27e","#2c3442"
 
 def alert(normal, bell=WARN, activity=ACC2):
     """A window's colour: bell beats activity beats the normal colour."""
