@@ -11,16 +11,16 @@ being pasted.)
 
 Wired in from tmux.conf through fzf binds in @sessionx-additional-options, so
 the plugin stays unmodified: 'start' loads these rows in place of the
-plugin's bare names, sessionx-frame.py reloads them when the plugin's kill
-and rename keys put bare names back, and it imports sessions() to size the
-list box.
+plugin's bare names, sessionx-binds.py reloads them after a kill or rename,
+and it imports sessions() to size the list box.
 
 Output is oldest-first on purpose: sessionx always runs fzf with --tac, so
 the LAST line printed here is the first row under the prompt.
 
-The name has to come first and be one word. The plugin only ever uses a
-row's first word: enter goes through its strip_git_branch_info, which drops
-everything from the first space, and kill and rename use fzf's {1}.
+The name has to come first and be one word. Only a row's first word is ever
+used: enter goes through the plugin's strip_git_branch_info, which drops
+everything from the first space, and sessionx-binds.py's kill and rename
+take the first word of the focused row.
 """
 import os, re, subprocess, time
 
