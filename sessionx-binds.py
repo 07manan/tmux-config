@@ -49,9 +49,9 @@ OFF  = "\x1b[0m"
 PENCIL = "\uf040"                 # nf-fa-pencil
 MAX_ROWS = 5
 # Rows that are neither list rows nor the preview size fzf is given: the
-# search box (3), the list box's top edge (1), and the preview box's top and
-# bottom edges (2), which fzf adds on top of the size. fzf's own border is
-# already outside FZF_LINES.
+# search box (3), the list box's top edge (1), and the preview
+# box's top and bottom edges (2), which fzf adds on top of the size. fzf's
+# own border is already outside FZF_LINES.
 CHROME = 6
 GHOST = "find or start a session"
 # The keys tmux.conf binds to this script, as the legend shows them
