@@ -18,10 +18,14 @@ DIV  = chr(0x2503)                # heavy vertical divider (box-drawing)
 ICON = chr(0xF489)                # session icon (nf-oct-terminal)
 ZOOM = chr(0xF065)                # zoomed-window flag (nf-fa-expand)
 ELL  = chr(0x2026)                # name-truncation ellipsis
-BAR  = "default"                  # status bar bg = the terminal's own bg
+BAR  = "#1e2532"                  # status bar strip, a step above the terminal's bg
 BG,PILL,DIM,TXT,BRT = "#151921","#202733","#727f92","#909bad","#e0e6f0"
 ACC,ACC2,DEEP,DARK  = "#9ab5dd","#7794c7","#5f7fb3","#2e405e"
 INK,WARN,BORD       = "#0f131b","#dcb27e","#2c3442"
+# Inactive window pills are a greyer steel blue, a quarter of the way from
+# the theme's blues to neutral grey, and a step lighter than the strip they
+# sit on: fill, index block, index, name
+WPILL,WIDX,WDIM,WTXT = "#2d333f","#39414f","#757f8d","#939ba9"
 
 def alert(normal, bell=WARN, activity=ACC2):
     """A window's colour: bell beats activity beats the normal colour."""
@@ -34,8 +38,8 @@ def esc(s):
     """Commas inside a #{?cond,yes,no} branch have to be written #,"""
     return s.replace(",", "#,")
 
-ibg, nbg = alert(BORD), alert(PILL)
-ifg, nfg = alert(DIM, INK, INK), alert(TXT, INK, INK)
+ibg, nbg = alert(WIDX), alert(WPILL)
+ifg, nfg = alert(WDIM, INK, INK), alert(WTXT, INK, INK)
 name = f"#{{=/20/{ELL}:window_name}}#{{?window_zoomed_flag, {ZOOM},}}"
 
 # Window label, explained where automatic-rename-format uses it below
@@ -49,12 +53,17 @@ mode = (f"#{{?client_prefix,{esc(pill(WARN, INK, 'PREFIX'))} ,"
 snip = f'''# ═══════════════════════════════════════════════════════════
 #  Rounded-pill status bar — true colour (24-bit)
 #
-#  bar bg      {BAR}    the terminal's own background (iTerm2 dark is
-#                       #15191f), so the pills float on the terminal itself
+#  bar bg      {BAR}   a strip a step lighter than the terminal's own
+#                       background (iTerm2 dark is #15191f), so the bar
+#                       stands apart from the panes above it
 #  canvas      {BG}   menu and popup background
-#  pill        {PILL}   inactive pill fill
-#  text dim    {DIM}   window index, secondary labels, session divider
-#  text        {TXT}   inactive window name
+#  pill        {PILL}   copy-mode position indicator
+#  window pill {WPILL}   inactive window pill fill (greyer than PILL)
+#  window idx  {WIDX}   inactive window index block
+#  window dim  {WDIM}   inactive window index
+#  window text {WTXT}   inactive window name
+#  text dim    {DIM}   secondary labels, session divider
+#  text        {TXT}   status and menu text
 #  text bright {BRT}   selected text
 #  accent      {ACC}   identity blue — active window, clock, session name
 #  accent mid  {ACC2}   copy-mode pill, activity highlight
@@ -62,7 +71,7 @@ snip = f'''# ══════════════════════�
 #  accent dark {DARK}   active index block, date block, selection fill
 #  ink         {INK}   text on light fills
 #  warn        {WARN}   prefix armed / bell
-#  border      {BORD}   pane and popup borders, inactive index block
+#  border      {BORD}   pane and popup borders
 #
 #  Pill construction:  #[fg=FILL,bg=BAR]{L}#[fg=INK,bg=FILL] text #[fg=FILL,bg=BAR]{R}
 #  The caps ({L} U+E0B6, {R} U+E0B4) are drawn as FOREGROUND in the pill

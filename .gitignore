@@ -1,3 +1,4 @@
 # TPM installs these from the @plugin lines in tmux.conf (prefix + I)
 plugins/
 .DS_Store
+__pycache__
