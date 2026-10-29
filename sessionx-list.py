@@ -74,8 +74,11 @@ def sessions():
     rows.sort(key=lambda s: int(s[0] or 0))
     if filtered:
         rows = [s for s in rows if not re.search(filtered.replace(",", "|"), s[3])]
+    # With only one session, filtering out the current one leaves no rows,
+    # and sessionx's --exit-0 closes the popup the moment it opens. Show the
+    # current session then, like the plugin's own input() does.
     if (filter_current or "true") == "true":
-        rows = [s for s in rows if s[3] != current]
+        rows = [s for s in rows if s[3] != current] or [s for s in rows if s[3] == current]
     return rows, claude, current
 
 

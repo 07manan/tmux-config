@@ -34,6 +34,7 @@ These steps can't be done with the commands above. Do them by hand, or ask Claud
 **iTerm2**
 
 - Settings → Profiles → Text → Font: pick the Nerd Font installed above (JetBrainsMono Nerd Font). Without it, the status bar's pill glyphs show as boxes.
+- Settings → Profiles → Keys → General → Left Option key: set it to Esc+. Without it, Option+A types a character instead of opening sessionx, and Option+Q and Option+W don't switch windows.
 - Settings → General → Selection: turn on "Applications in terminal may access clipboard". Without it, `y` in copy mode won't reach the macOS clipboard.
 
 **Claude Code hook**
